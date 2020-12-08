@@ -59,10 +59,14 @@ blah
 ## Results
 Analysis of results goes here
 
+#### Mixed Model, Mixed Test Data
 ![alt text](test_results/mixedmodel-mixeddata/percent_confusion_matrix.png)
 
-blah
+#### Mixed Model, Target Test Data
+![alt text](test_results/mixedmodel-targetdata/percent_confusion_matrix.png)
 
-blah
+#### Target Model, Mixed Test Data
+![alt text](test_results/targetmodel-mixeddata/percent_confusion_matrix.png)
 
-blah
+#### Target Model, Target Test Data
+![alt text](test_results/targetmodel-targetdata/percent_confusion_matrix.png)
