@@ -1,5 +1,5 @@
 ---
-title: DVC Phoneme Classifier
+title: DVC Accent Classifier
 ---
 [Return to Home](index.md)
 ## Contents:
