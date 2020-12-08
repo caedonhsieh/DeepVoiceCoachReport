@@ -11,7 +11,7 @@ title: DVC Phoneme Classifier
 - [Results](#results)
 
 
-### Introduction
+## Introduction
 The introduction goes here
 
 blah
@@ -20,7 +20,7 @@ blah
 
 blah
 
-### Architecture
+## Architecture
 Description of the model architecture goes here
 
 blah
@@ -29,7 +29,7 @@ blah
 
 blah
 
-### Data
+## Data
 Description of the data goes here
 
 blah
@@ -38,7 +38,7 @@ blah
 
 blah
 
-### Training
+## Training
 Description of training process goes here
 
 blah
@@ -47,7 +47,7 @@ blah
 
 blah
 
-### Evaluation
+## Evaluation
 Description of evaluation process goes here
 
 blah
@@ -56,7 +56,7 @@ blah
 
 blah
 
-### Results
+## Results
 Analysis of results goes here
 
 blah
