@@ -1,6 +1,4 @@
----
-title: DVC Accent Classifier
----
+# DVC Accent Classifier
 [Return to Home](index.md)
 ## Contents:
 - [Introduction](#introduction)
