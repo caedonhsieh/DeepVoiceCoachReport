@@ -4,10 +4,10 @@ This is the phoneme classifier
 Contents:
 - [Introduction](#introduction)
 - [Architecture](#architecture)
-- Data
-- Training
-- Evaluation
-- Results
+- [Data](#data)
+- [Training](#training)
+- [Evaluation](#evaluation)
+- [Results](#results)
 
 
 ### Introduction
