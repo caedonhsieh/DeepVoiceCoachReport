@@ -13,36 +13,54 @@ title: DVC Phoneme Classifier
 
 ### Introduction
 The introduction goes here
+
 blah
+
 blah
+
 blah
 
 ### Architecture
 Description of the model architecture goes here
+
 blah
+
 blah
+
 blah
 
 ### Data
 Description of the data goes here
+
 blah
+
 blah
+
 blah
 
 ### Training
 Description of training process goes here
+
 blah
+
 blah
+
 blah
 
 ### Evaluation
 Description of evaluation process goes here
+
 blah
+
 blah
+
 blah
 
 ### Results
 Analysis of results goes here
+
 blah
+
 blah
+
 blah
