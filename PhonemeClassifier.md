@@ -60,10 +60,10 @@ blah
 ## Results
 Analysis of results goes here
 
-&nbsp;     | Mixed Data                |  Target Data
----------|:-------------------------:|:-------------------------:
-Mixed Model|![alt text](test_results/mixedmodel-mixeddata/percent_confusion_matrix.png)|![alt text](test_results/mixedmodel-targetdata/percent_confusion_matrix.png)
-Target Model|![alt text](test_results/targetmodel-mixeddata/percent_confusion_matrix.png)|![alt text](test_results/targetmodel-targetdata/percent_confusion_matrix.png)
+|  &nbsp;  |  Mixed Data  |  Target Data  |
+|:---------|:------------:|:-------------:|
+|Mixed Model|![alt text](test_results/mixedmodel-mixeddata/percent_confusion_matrix.png)|![alt text](test_results/mixedmodel-targetdata/percent_confusion_matrix.png)|
+|Target Model|![alt text](test_results/targetmodel-mixeddata/percent_confusion_matrix.png)|![alt text](test_results/targetmodel-targetdata/percent_confusion_matrix.png)|
 
 ## Conclusion
 Conclusion goes here
