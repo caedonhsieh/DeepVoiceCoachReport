@@ -60,6 +60,10 @@ blah
 ## Results
 Analysis of results goes here
 
+Solarized dark             |  Solarized Ocean
+:-------------------------:|:-------------------------:
+![alt text](test_results/mixedmodel-mixeddata/percent_confusion_matrix.png)  |  ![alt text](test_results/mixedmodel-targetdata/percent_confusion_matrix.png)
+
 #### Mixed Model, Mixed Test Data
 ![alt text](test_results/mixedmodel-mixeddata/percent_confusion_matrix.png)
 
