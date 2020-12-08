@@ -3,7 +3,7 @@ This is the phoneme classifier
 
 Contents:
 - Introduction
-- Architecture
+- [Architecture](#architecture)
 - Data
 - Training
 - Evaluation
@@ -13,7 +13,6 @@ Contents:
 [### Introduction](#introduction)
 The introduction goes here
 
-[anchor test](#architecture)
 ### Architecture
 Description of the model architecture goes here
 
