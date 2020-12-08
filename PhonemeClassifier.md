@@ -1,6 +1,7 @@
 ---
 title: DVC Phoneme Classifier
 ---
+[Return to Home](index.md)
 ## Contents:
 - [Introduction](#introduction)
 - [Architecture](#architecture)
