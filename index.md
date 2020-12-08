@@ -1,5 +1,4 @@
 # Deep Voice Coach
----
 
 ## Welcome to GitHub Pages
 
