@@ -2,7 +2,7 @@
 This is the phoneme classifier
 
 Contents:
-- Introduction
+- [Introduction](#introduction)
 - [Architecture](#architecture)
 - Data
 - Training
@@ -10,7 +10,7 @@ Contents:
 - Results
 
 
-[### Introduction](#introduction)
+### Introduction
 The introduction goes here
 
 ### Architecture
