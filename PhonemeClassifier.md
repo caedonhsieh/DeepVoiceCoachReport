@@ -1,6 +1,4 @@
----
-title: DVC Phoneme Classifier
----
+# DVC Phoneme Classifier
 [Return to Home](index.md)
 ## Contents:
 - [Introduction](#introduction)
