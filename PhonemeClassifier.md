@@ -59,6 +59,8 @@ blah
 ## Results
 Analysis of results goes here
 
+![alt text](test_results/mixedmodel-mixeddata/percent_confusion_matrix.png)
+
 blah
 
 blah
