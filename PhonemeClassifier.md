@@ -44,7 +44,7 @@ We trained two models, one using the target accent training and validation parti
 
 We used gradient clipping due to a significant stabilization in the training loss and accuracy. Below, we show the graphs for training with and without gradient clipping using the target accent data. When we used gradient clipping, the learning appears to always start very slowly. During this time, the network almost always predicts a small handful of phonemes, especially silence. We hypothesize that the weights are slowly growing during this time until the much faster learning begins. For both models, the validation accuracy and loss becomes very unstable at this point. This may be due to having a validation dataset that is too small, and future training with a larger validation set is planned. In general, the model trained on only the target accent is able to achieve a higher best accuracy.
 
-|  &nbsp;  |  No gradient clipping  |  Target data, gradient clipping  |  Mixed data, gradient clipping  |
+|  &nbsp;  |  Target data, no gradient clipping  |  Target data, gradient clipping  |  Mixed data, gradient clipping  |
 |:--------:|:------------:|:-------------:|:------------:|
 |Training Accuracy|[![alt text](images/dvcpc_training_graphs/NoClipTrainAcc.png)](images/dvcpc_training_graphs/NoClipTrainAcc.png)|[![alt text](images/dvcpc_training_graphs/TargetClipTrainAcc.png)](images/dvcpc_training_graphs/TargetClipTrainAcc.png)|[![alt text](images/dvcpc_training_graphs/MixClipTrainAcc.png)](images/dvcpc_training_graphs/MixClipTrainAcc.png)
 |Validation Accuracy|[![alt text](images/dvcpc_training_graphs/NoClipValAcc.png)](images/dvcpc_training_graphs/NoClipValAcc.png)|[![alt text](images/dvcpc_training_graphs/TargetClipValAcc.png)](images/dvcpc_training_graphs/TargetClipValAcc.png)|[![alt text](images/dvcpc_training_graphs/MixClipValAcc.png)](images/dvcpc_training_graphs/MixClipValAcc.png)
@@ -52,18 +52,16 @@ We used gradient clipping due to a significant stabilization in the training los
 |Validation Loss|[![alt text](images/dvcpc_training_graphs/NoClipValLoss.png)](images/dvcpc_training_graphs/NoClipValLoss.png)|[![alt text](images/dvcpc_training_graphs/TargetClipValLoss.png)](images/dvcpc_training_graphs/TargetClipValLoss.png)|[![alt text](images/dvcpc_training_graphs/MixClipValLoss.png)](images/dvcpc_training_graphs/MixClipValLoss.png)
 
 ## Evaluation
-To evaluate the model, we tested both the target-trained and mixed-trained models against both the target accent and mixed accent testing data. We trained using the saved model weights at the point with the lowest validation loss from training. Quantitatively, we look at the performance of each model on the target and mixed testing data. We investigate whether the target-trained model performs better on the target accent testing data compared to the mixed accent testing data. We also investigate how target-trained model's performance gap on the target and mixed accent testing data compares to the mixed-model's performance gap. A larger performance gap might suggest that the target-trained model has learned phoneme nuances that are specific to the target accent by training exclusively with the target accent.
+To evaluate the model, we tested both the target-trained and mixed-trained models against both the target accent and mixed accent testing data. We trained using the saved model weights at the point with the lowest validation loss from training–
+
+Quantitatively, we look at the performance of each model on the target and mixed testing data. We investigate whether the target-trained model performs better on the target accent testing data compared to the mixed accent testing data. We also investigate how target-trained model's performance gap on the target and mixed accent testing data compares to the mixed-model's performance gap. A larger performance gap might suggest that the target-trained model has learned phoneme nuances that are specific to the target accent by training exclusively with the target accent.
 
 Qualitatively, we manually inspect a random few audio files from the test set. For these, we plot the model's confidence for each frame in the audio file. For each frame of the melspectrogram input, the network outputs a 71-element vector where each value corresponds to how much the model thinks the frame is that particular phoneme. We take a softmax of this vector, then choose the maximum softmaxed value to represent the confidence on that particular frame. We hope to see lower confidence in frames where accent errors occur for the target-trained model.
 
 ## Results
 
-|  &nbsp;  |  Mixed testing data  |  Target testing data  |
-|:--------:|:------------:|:-------------:|
-|Mixed-trained model|[![alt text](images/dvcpc_test_results/mixedmodel-mixeddata/percent_confusion_matrix.png)](images/dvcpc_test_results/mixedmodel-mixeddata/percent_confusion_matrix.png)|[![alt text](images/dvcpc_test_results/mixedmodel-targetdata/percent_confusion_matrix.png)](images/dvcpc_test_results/mixedmodel-targetdata/percent_confusion_matrix.png)|
-|Target-trained model|[![alt text](images/dvcpc_test_results/targetmodel-mixeddata/percent_confusion_matrix.png)](images/dvcpc_test_results/targetmodel-mixeddata/percent_confusion_matrix.png)|[![alt text](images/dvcpc_test_results/targetmodel-targetdata/percent_confusion_matrix.png)](images/dvcpc_test_results/targetmodel-targetdata/percent_confusion_matrix.png)|
-
-Here, we show the confusion matrices. Along the horizontal axis, we have the actual phoneme class. Along the vertical axis, we have the predicted phoneme class. The confusion matrix was computed by counting each predicted-actual phoneme combination, then dividing by the total number of times the actual phoneme appears. Thus, each cell's color represents a percentage of predicted phoneme for each actual phoneme. The color scale goes from purple to green too yellow, where a yellow cell means that when the actual phoneme was the phoneme associated with that column, the predicted phoneme was very often the phoneme associated with that row.
+#### Accuracy and Loss
+First, we will look at the overall statistics from testing.
 
 | Model | Accent | Accuracy | Loss |
 |:-----:|:------:|:--------:|:----:|
@@ -73,6 +71,35 @@ Here, we show the confusion matrices. Along the horizontal axis, we have the act
 |Target-trained|Target|0.534|2.033|
 
 Here, we show the average testing accuracy and loss for both models with both testing data partitions. While both models improved slightly with the target accent testing data, the target-trained model had a slightly larger accuracy performance gap of 3%, compared to the mixed-trained model's 1.3% performance gap. In general, the target-trained model performed better than the mixed-trained model, even on the mixed accent testing data. This may be due to a larger proportion of American English accents relative to other accents in the mixed accent testing data.
+
+#### Confusion Matrices
+Next, we analyze confusion matrices that show the relationship between actual and predicted phonemes for each test run.
+
+|  &nbsp;  |  Mixed testing data  |  Target testing data  |
+|:--------:|:------------:|:-------------:|
+|Mixed-trained model|[![alt text](images/dvcpc_test_results/mixedmodel-mixeddata/percent_confusion_matrix.png)](images/dvcpc_test_results/mixedmodel-mixeddata/percent_confusion_matrix.png)|[![alt text](images/dvcpc_test_results/mixedmodel-targetdata/percent_confusion_matrix.png)](images/dvcpc_test_results/mixedmodel-targetdata/percent_confusion_matrix.png)|
+|Target-trained model|[![alt text](images/dvcpc_test_results/targetmodel-mixeddata/percent_confusion_matrix.png)](images/dvcpc_test_results/targetmodel-mixeddata/percent_confusion_matrix.png)|[![alt text](images/dvcpc_test_results/targetmodel-targetdata/percent_confusion_matrix.png)](images/dvcpc_test_results/targetmodel-targetdata/percent_confusion_matrix.png)|
+
+Here, we show the confusion matrices. Along the horizontal axis, we have the actual phoneme class. Along the vertical axis, we have the predicted phoneme class. The confusion matrix was computed by counting each predicted-actual phoneme combination, then dividing by the total number of times the actual phoneme appears. Thus, each cell's color represents a percentage of predicted phoneme for each actual phoneme. The color scale goes from purple to green too yellow, where a yellow cell means that when the actual phoneme was the phoneme associated with that column, the predicted phoneme was very often the phoneme associated with that row.
+
+There are a few notable observations. First, both models are very good at predicting silence, which is phoneme 0. Second, many related phonemes are frequently confused, and this can be seen with small slightly bright squares along the diagonal. For example, all four examples have a small 2x2 square at phoneme 35 and 36, which are IH0 and IH1 respectively. These seem to be related or similar phonemes, and as such, they are commonly confused. In general, the target-trained models have stronger diagonals, especially with the target testing data, which is consistent with the overall performance statistics.
+
+#### Frame-by-frame Analysis
+
+Lastly, we will manually analyze two specific examples. One of these is American English, and the other is not.
+
+The first example is American English, and you can listen to it [here](audio/common_voice_en_17945591.wav).
+| Model | Figure |
+|:-----:|:------:|
+|Mixed-trained|[![alt text](images/dvcpc_test_results/mixedmodel-targetdata/target_confidence_common_voice_en_17945591.png)](images/dvcpc_test_results/mixedmodel-targetdata/target_confidence_common_voice_en_17945591.png)|
+|Target-trained|[![alt text](images/dvcpc_test_results/targetmodel-targetdata/target_confidence_common_voice_en_17945591.png)](images/dvcpc_test_results/mixedmodel-targetdata/target_confidence_common_voice_en_17945591.png)|
+
+The second example is not American English, and you can listen to it [here](audio/common_voice_en_76209.wav).
+
+| Model | Figure |
+|:-----:|:------:|
+|Mixed-trained|[![alt text](images/dvcpc_test_results/mixedmodel-mixeddata/mixed_confidence_common_voice_en_76209.png)](images/dvcpc_test_results/mixedmodel-targetdata/target_confidence_common_voice_en_76209.png)|
+|Target-trained|[![alt text](images/dvcpc_test_results/targetmodel-mixeddata/mixed_confidence_common_voice_en_76209.png)](images/dvcpc_test_results/mixedmodel-targetdata/target_confidence_common_voice_en_76209.png)|
 
 ## Conclusion
 Conclusion goes here
