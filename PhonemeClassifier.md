@@ -45,6 +45,8 @@ We used gradient clipping due to a significant stabilization in the training los
 |Training Loss|[![alt text](images/dvcpc_training_graphs/NoClipTrainLoss.png)](images/dvcpc_training_graphs/NoClipTrainLoss.png)|[![alt text](images/dvcpc_training_graphs/TargetClipTrainLoss.png)](images/dvcpc_training_graphs/TargetClipTrainLoss.png)|[![alt text](images/dvcpc_training_graphs/MixClipTrainLoss.png)](images/dvcpc_training_graphs/MixClipTrainLoss.png)
 |Validation Loss|[![alt text](images/dvcpc_training_graphs/NoClipValLoss.png)](images/dvcpc_training_graphs/NoClipValLoss.png)|[![alt text](images/dvcpc_training_graphs/TargetClipValLoss.png)](images/dvcpc_training_graphs/TargetClipValLoss.png)|[![alt text](images/dvcpc_training_graphs/MixClipValLoss.png)](images/dvcpc_training_graphs/MixClipValLoss.png)
 
+*These are the graphs show the accuracy and loss for three different training runs. The x axis is the epoch. Accuracy graphs plot average accuracy on the y axis, computed as the number of correctly predicted phoneme frames divided by the total number of frames. Loss graphs plot the cross-entropy loss on the y axis.*
+
 Note that you can click on an image to see it in full-size.
 
 ## Evaluation
@@ -66,6 +68,8 @@ First, we will look at the overall statistics from testing.
 |Target-trained|Mixed|0.504|2.230|
 |Target-trained|Target|0.534|2.033|
 
+*This table shows the testing accuracy and loss for each combination of model and type of testing data (mixed or only target)*
+
 Here, we show the average testing accuracy and loss for both models with both testing data partitions. While both models improved slightly with the target accent testing data, the target-trained model had a slightly larger accuracy performance gap of 3%, compared to the mixed-trained model's 1.3% performance gap. In general, the target-trained model performed better than the mixed-trained model, even on the mixed accent testing data. This may be due to a larger proportion of American English accents relative to other accents in the mixed accent testing data.
 
 #### Confusion Matrices
@@ -75,6 +79,8 @@ Next, we analyze confusion matrices that show the relationship between actual an
 |:--------:|:------------:|:-------------:|
 |Mixed-trained model|[![alt text](images/dvcpc_test_results/mixedmodel-mixeddata/percent_confusion_matrix.png)](images/dvcpc_test_results/mixedmodel-mixeddata/percent_confusion_matrix.png)|[![alt text](images/dvcpc_test_results/mixedmodel-targetdata/percent_confusion_matrix.png)](images/dvcpc_test_results/mixedmodel-targetdata/percent_confusion_matrix.png)|
 |Target-trained model|[![alt text](images/dvcpc_test_results/targetmodel-mixeddata/percent_confusion_matrix.png)](images/dvcpc_test_results/targetmodel-mixeddata/percent_confusion_matrix.png)|[![alt text](images/dvcpc_test_results/targetmodel-targetdata/percent_confusion_matrix.png)](images/dvcpc_test_results/targetmodel-targetdata/percent_confusion_matrix.png)|
+
+*These are the confusion matrices, showing the relationship between actual phoneme class (horizontal) and predicted phoneme class (vertical) for each coombination of model and type of testing data (mixed or only target).*
 
 Here, we show the confusion matrices. Along the horizontal axis, we have the actual phoneme class. Along the vertical axis, we have the predicted phoneme class. The confusion matrix was computed by counting each predicted-actual phoneme combination, then dividing by the total number of times the actual phoneme appears. Thus, each cell's color represents a percentage of predicted phoneme for each actual phoneme. The color scale goes from purple to green too yellow, where a yellow cell means that when the actual phoneme was the phoneme associated with that column, the predicted phoneme was very often the phoneme associated with that row.
 
@@ -88,6 +94,7 @@ Lastly, we will manually analyze two specific examples. One of these is American
 |:-----:|:------:|
 |Mixed-trained|[![alt text](images/dvcpc_test_results/mixedmodel-targetdata/target_confidence_common_voice_en_17945591.png)](images/dvcpc_test_results/mixedmodel-targetdata/target_confidence_common_voice_en_17945591.png)|
 |Target-trained|[![alt text](images/dvcpc_test_results/targetmodel-targetdata/target_confidence_common_voice_en_17945591.png)](images/dvcpc_test_results/mixedmodel-targetdata/target_confidence_common_voice_en_17945591.png)|
+*The confidence graphs plots the confidence, computed by the max of the softmax of the network's output vector, for each frame of the audio clip. The phoneme graphs plot the predicted (blue) and actual (orange) phonemes for each frame of the audio clip.*
 
 In general, the target-trained model is more confident than the mixed-train model, even though it is not necessarily more accurate on this example. Both models are very confident on the silence. In general, the confidence is quite noisy, and seems to sharply drop between phonemes, which makes sense because the speech itself is transitioning between phonemes.
 
@@ -99,6 +106,7 @@ The second example is not American English, and you can listen to it [here](audi
 |:-----:|:------:|
 |Mixed-trained|[![alt text](images/dvcpc_test_results/mixedmodel-mixeddata/mixed_confidence_common_voice_en_76209.png)](images/dvcpc_test_results/mixedmodel-targetdata/target_confidence_common_voice_en_76209.png)|
 |Target-trained|[![alt text](images/dvcpc_test_results/targetmodel-mixeddata/mixed_confidence_common_voice_en_76209.png)](images/dvcpc_test_results/mixedmodel-targetdata/target_confidence_common_voice_en_76209.png)|
+*The confidence graphs plots the confidence, computed by the max of the softmax of the network's output vector, for each frame of the audio clip. The phoneme graphs plot the predicted (blue) and actual (orange) phonemes for each frame of the audio clip.*
 
 The confidence on this example is generally lower than the previous example. It also seems slightly more complicated, but again we see the same spike pattern. Some of the confidence spikes seem to correspond to correct classifications, but others do not. Even though this example is not American English, we still see a higher confidence with the target-trained model, which makes it hard to distinguish. The highest confidence spike in the target-trained model occurs at around frame 250, which is the "AY1" phoneme at the start of "Idaho". The speaker pronounces this with an "H" sound just before, which the target-trained model classifies just before the confidence spike.
 
