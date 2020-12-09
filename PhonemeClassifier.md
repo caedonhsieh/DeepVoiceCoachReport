@@ -11,13 +11,7 @@
 
 
 ## Introduction
-The introduction goes here
-
-blah
-
-blah
-
-blah
+For this part of the Deep Voice Coach, we explored a phoneme classifier. We train two models, one with the target accent, and one with a mix of different accents. Then, we compare how these models do at classifying phonemes given test data with the target accent and other accents. Ideally, the model trained on the target accent will more confidently and correctly classify phonemes of the target accent, but may perform worse with other accents. By comparison, we hope to see a smaller performance and confidence gap with the model trained on mixed accents. Using these two models, we hope to be able to identify phoneme-level accent errors in user speech.
 
 ## Architecture
 The model architecure is based on the neural network used by DeepSpeech 2, consisting of two one-dimensional convolutional layers, each followed by batch normalization and ReLU activation. After those layers, the model has three bidirectional GRU layers, then a fully-connected layer. All layers use 512 channels. The output of the network is a 71-element vector where each element corresponds to one of 71 possible phonemes, which includes silence and noise.
@@ -50,6 +44,7 @@ We used gradient clipping due to a significant stabilization in the training los
 |Validation Accuracy|[![alt text](images/dvcpc_training_graphs/NoClipValAcc.png)](images/dvcpc_training_graphs/NoClipValAcc.png)|[![alt text](images/dvcpc_training_graphs/TargetClipValAcc.png)](images/dvcpc_training_graphs/TargetClipValAcc.png)|[![alt text](images/dvcpc_training_graphs/MixClipValAcc.png)](images/dvcpc_training_graphs/MixClipValAcc.png)
 |Training Loss|[![alt text](images/dvcpc_training_graphs/NoClipTrainLoss.png)](images/dvcpc_training_graphs/NoClipTrainLoss.png)|[![alt text](images/dvcpc_training_graphs/TargetClipTrainLoss.png)](images/dvcpc_training_graphs/TargetClipTrainLoss.png)|[![alt text](images/dvcpc_training_graphs/MixClipTrainLoss.png)](images/dvcpc_training_graphs/MixClipTrainLoss.png)
 |Validation Loss|[![alt text](images/dvcpc_training_graphs/NoClipValLoss.png)](images/dvcpc_training_graphs/NoClipValLoss.png)|[![alt text](images/dvcpc_training_graphs/TargetClipValLoss.png)](images/dvcpc_training_graphs/TargetClipValLoss.png)|[![alt text](images/dvcpc_training_graphs/MixClipValLoss.png)](images/dvcpc_training_graphs/MixClipValLoss.png)
+You can click on an image to see it in full-size.
 
 ## Evaluation
 To evaluate the model, we tested both the target-trained and mixed-trained models against both the target accent and mixed accent testing data. We trained using the saved model weights at the point with the lowest validation loss from training–
@@ -109,4 +104,10 @@ The second example is not American English, and you can listen to it [here](audi
 The confidence on this example is generally lower than the previous example. It also seems slightly more complicated, but again we see the same spike pattern. Some of the confidence spikes seem to correspond to correct classifications, but others do not. Even though this example is not American English, we still see a higher confidence with the target-trained model, which makes it hard to distinguish. The highest confidence spike in the target-trained model occurs at around frame 250, which is the "AY1" phoneme at the start of "Idaho". The speaker pronounces this with an "H" sound just before, which the target-trained model classifies just before the confidence spike.
 
 ## Conclusion
-Conclusion goes here
+The phoneme classifier experiments yielded mixed results. Given that this is a classification problem with 71 classes, both models learned reasonably well, evidenced by decent accuracy and promising confusion matrices. Nevertheless, the validation instability in the training results should be further explored, possibly by adding more training or validation data. It is unclear to what extent the models overfit, because they still performs equally well on testing data.
+
+As hypothesized, there was a larger performance gap for the target-trained model compared to the mixed-trained model; however, this gap is relatively small. The bigger the gap is, the more confidently we can say that the target-trained model is specifically tailored to classify the American English pronunciation of phonemes. Exploring a mixed dataset that has fewer American English examples might yield clearer results, although the overall accuracy of the mixed-trained model would likely decrease. 
+
+The frame-by-frame confidence, while interesting, does not seem to show anything extremely promising. The confidence gap does not seem clear enough to allow the model pair to identify phoneme-level accent errors reliably, especially not without a ground-truth phoneme.
+
+Overall, this exploration into phoneme classification may show potential in helping with accent classification, but would require much further research to accomplish the original goal of identifying phoneme-level accent errors.
