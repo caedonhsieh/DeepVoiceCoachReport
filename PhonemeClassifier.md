@@ -105,8 +105,8 @@ The second example is not American English, and you can listen to it [here](audi
 
 | Model | Graphs |
 |:-----:|:------:|
-|Mixed-trained|[![alt text](images/dvcpc_test_results/mixedmodel-mixeddata/mixed_confidence_common_voice_en_76209.png)](images/dvcpc_test_results/mixedmodel-targetdata/target_confidence_common_voice_en_76209.png)|
-|Target-trained|[![alt text](images/dvcpc_test_results/targetmodel-mixeddata/mixed_confidence_common_voice_en_76209.png)](images/dvcpc_test_results/mixedmodel-targetdata/target_confidence_common_voice_en_76209.png)|
+|Mixed-trained|[![alt text](images/dvcpc_test_results/mixedmodel-mixeddata/mixed_confidence_common_voice_en_76209.png)](images/dvcpc_test_results/mixedmodel-targetdata/mixed_confidence_common_voice_en_76209.png)|
+|Target-trained|[![alt text](images/dvcpc_test_results/targetmodel-mixeddata/mixed_confidence_common_voice_en_76209.png)](images/dvcpc_test_results/mixedmodel-targetdata/mixed_confidence_common_voice_en_76209.png)|
 
 *The confidence graphs plots the confidence, computed by the max of the softmax of the network's output vector, for each frame of the audio clip. The phoneme graphs plot the predicted (blue) and actual (orange) phonemes for each frame of the audio clip.*
 
