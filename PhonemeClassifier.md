@@ -11,7 +11,7 @@
 
 
 ## Introduction
-For this part of the Deep Voice Coach, we explored a phoneme classifier. We train two models, one with the target accent, and one with a mix of different accents. Then, we compare how these models do at classifying phonemes given test data with the target accent and other accents. Ideally, the model trained on the target accent will more confidently and correctly classify phonemes of the target accent, but may perform worse with other accents. By comparison, we hope to see a smaller performance and confidence gap with the model trained on mixed accents. Using these two models, we hope to be able to identify phoneme-level accent errors in user speech.
+Users learning a target accent likely would want precise feedback on which phonemes they pronounce differently from the target accent. For this part of the Deep Voice Coach, we explored a phoneme classifier. We train two models, one with the target accent, and one with a mix of different accents. Then, we compare how these models do at classifying phonemes given test data with the target accent and other accents. Ideally, the model trained on the target accent will more confidently and correctly classify phonemes of the target accent, but may perform worse with other accents. By comparison, we hope to see a smaller performance and confidence gap with the model trained on mixed accents. Using these two models, we hope to be able to identify phoneme-level accent errors in user speech.
 
 ## Architecture
 The model architecure is based on the neural network used by DeepSpeech 2, consisting of two one-dimensional convolutional layers, each followed by batch normalization and ReLU activation. After those layers, the model has three bidirectional GRU layers, then a fully-connected layer. All layers use 512 channels. The output of the network is a 71-element vector where each element corresponds to one of 71 possible phonemes, which includes silence and noise.
@@ -81,11 +81,9 @@ There are a few notable observations. First, both models are very good at predic
 
 #### Frame-by-frame Analysis
 
-Lastly, we will manually analyze two specific examples. One of these is American English, and the other is not.
+Lastly, we will manually analyze two specific examples. One of these is American English, and the other is not. The first example is American English, and you can listen to it [here](audio/common_voice_en_17945591.wav). The speaker says, "It is a fact".
 
-The first example is American English, and you can listen to it [here](audio/common_voice_en_17945591.wav). The speaker says, "It is a fact".
-
-| Model | Figure |
+| Model | Graphs |
 |:-----:|:------:|
 |Mixed-trained|[![alt text](images/dvcpc_test_results/mixedmodel-targetdata/target_confidence_common_voice_en_17945591.png)](images/dvcpc_test_results/mixedmodel-targetdata/target_confidence_common_voice_en_17945591.png)|
 |Target-trained|[![alt text](images/dvcpc_test_results/targetmodel-targetdata/target_confidence_common_voice_en_17945591.png)](images/dvcpc_test_results/mixedmodel-targetdata/target_confidence_common_voice_en_17945591.png)|
@@ -96,7 +94,7 @@ There are several other specific observations. At around frame 100, we have the 
 
 The second example is not American English, and you can listen to it [here](audio/common_voice_en_76209.wav). The speaker says, "What will the weather be in Idaho".
 
-| Model | Figure |
+| Model | Graphs |
 |:-----:|:------:|
 |Mixed-trained|[![alt text](images/dvcpc_test_results/mixedmodel-mixeddata/mixed_confidence_common_voice_en_76209.png)](images/dvcpc_test_results/mixedmodel-targetdata/target_confidence_common_voice_en_76209.png)|
 |Target-trained|[![alt text](images/dvcpc_test_results/targetmodel-mixeddata/mixed_confidence_common_voice_en_76209.png)](images/dvcpc_test_results/mixedmodel-targetdata/target_confidence_common_voice_en_76209.png)|
@@ -110,4 +108,4 @@ As hypothesized, there was a larger performance gap for the target-trained model
 
 The frame-by-frame confidence, while interesting, does not seem to show anything extremely promising. The confidence gap does not seem clear enough to allow the model pair to identify phoneme-level accent errors reliably, especially not without a ground-truth phoneme.
 
-Overall, this exploration into phoneme classification may show potential in helping with accent classification, but would require much further research to accomplish the original goal of identifying phoneme-level accent errors.
+Overall, this exploration into phoneme classification may show potential in helping with accent classification, but further research would be necessary to accomplish the original goal of identifying phoneme-level accent errors.
