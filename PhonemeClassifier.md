@@ -19,7 +19,7 @@ The model architecure is based on the neural network used by DeepSpeech 2, consi
 We use a cross-entropy loss function between the predicted phoneme and ground truth phonemes to train the network. The cross-entropy loss is weighted to decrease the value of predicted silences, because silences are far more common than any other phoneme. The weights discourage the network from learning to always predict silence.
 
 ## Data
-The experiments use the Mozilla Common Voice Dataset \cite{ardila2019common}, found [here](https://commonvoice.mozilla.org/en/datasets). This dataset includes 1,400 hours of validated English speech and transcripts by 60,000+ speakers, with accent labels for 700+ hours. We will only use labeled data, and we simplify the classification to binary labels of American English and not American English. The data is structured in a CSV file that includes the relative path to the audio file, transcript, age, gender, and accent. The audio files are provided in the MP3 format.
+The experiments use the [Mozilla Common Voice Dataset](https://commonvoice.mozilla.org/en/datasets). This dataset includes 1,400 hours of validated English speech and transcripts by 60,000+ speakers, with accent labels for 700+ hours. We will only use labeled data, and we simplify the classification to binary labels of American English and not American English. The data is structured in a CSV file that includes the relative path to the audio file, transcript, age, gender, and accent. The audio files are provided in the MP3 format.
 
 The data we used was selected randomoly from the Mozilla Common Voice Dataset and split into six disjoint partitions:
 1. 50 hours of only the target accent (American English) for training
