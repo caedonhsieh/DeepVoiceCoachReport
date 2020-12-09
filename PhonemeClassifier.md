@@ -89,6 +89,7 @@ There are a few notable observations. First, both models are very good at predic
 Lastly, we will manually analyze two specific examples. One of these is American English, and the other is not.
 
 The first example is American English, and you can listen to it [here](audio/common_voice_en_17945591.wav).
+
 | Model | Figure |
 |:-----:|:------:|
 |Mixed-trained|[![alt text](images/dvcpc_test_results/mixedmodel-targetdata/target_confidence_common_voice_en_17945591.png)](images/dvcpc_test_results/mixedmodel-targetdata/target_confidence_common_voice_en_17945591.png)|
