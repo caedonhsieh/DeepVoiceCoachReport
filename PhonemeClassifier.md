@@ -42,13 +42,14 @@ We extract ground truth phonemes using the Montreal Forced Aligner (MFA). MFA pr
 ## Training
 We trained two models, one using the target accent training and validation partitions, and another using the mixed accent training and validation partitions. The training is completed with a gradient clipping value of 0.5 and an Adam optimizer with a learning rate of 1e-3. We trained the models for 100 epochs.
 
-We used gradient clipping due to a significant stabilization in the training loss and accuracy. Below, we show the graphs for training with and without gradient clipping using the target accent data.
+We used gradient clipping due to a significant stabilization in the training loss and accuracy. Below, we show the graphs for training with and without gradient clipping using the target accent data. When we used gradient clipping, the learning appears to always start very slowly. During this time, the network almost always predicts a small handful of phonemes, especially silence. We hypothesize that the weights are slowly growing during this time until the much faster learning begins. For both models, the validation accuracy and loss becomes very unstable at this point. This may be due to having a validation dataset that is too small, and future training with a larger validation set is planned. In general, the model trained on only the target accent is able to achieve a higher best accuracy.
 
-(insert graphs here)
-
-When we used gradient clipping, the learning appears to always start very slowly. During this time, the network almost always predicts a small handful of phonemes, especially silence. We hypothesize that the weights are slowly growing during this time until the much faster learning begins. For both models, the validation accuracy and loss becomes very unstable at this point. This may be due to having a validation dataset that is too small, and future training with a larger validation set is planned. In general, the model trained on only the target accent is able to achieve a higher best accuracy.
-
-(insert more graphs here)
+|  &nbsp;  |  No gradient clipping  |  Target data, gradient clipping  |  Mixed data, gradient clipping  |
+|:--------:|:------------:|:-------------:|:------------:|
+|Training Accuracy|place|hold|er|
+|Validation Accuracy|place|hold|er|
+|Training Loss|Mixed-trained model|[![alt text](test_results/mixedmodel-mixeddata/percent_confusion_matrix.png)](test_results/mixedmodel-mixeddata/percent_confusion_matrix.png)|[![alt text](test_results/mixedmodel-targetdata/percent_confusion_matrix.png)](test_results/mixedmodel-targetdata/percent_confusion_matrix.png)|
+|Validation Loss|Target-trained model|[![alt text](test_results/targetmodel-mixeddata/percent_confusion_matrix.png)](test_results/targetmodel-mixeddata/percent_confusion_matrix.png)|[![alt text](test_results/targetmodel-targetdata/percent_confusion_matrix.png)](test_results/targetmodel-targetdata/percent_confusion_matrix.png)|
 
 ## Evaluation
 To evaluate the model, we tested both the target-trained and mixed-trained models against both the target accent and mixed accent testing data. We trained using the saved model weights at the point with the lowest validation loss from training. Quantitatively, we look at the performance of each model on the target and mixed testing data. We investigate whether the target-trained model performs better on the target accent testing data compared to the mixed accent testing data. We also investigate how target-trained model's performance gap on the target and mixed accent testing data compares to the mixed-model's performance gap. A larger performance gap might suggest that the target-trained model has learned phoneme nuances that are specific to the target accent by training exclusively with the target accent.
@@ -59,8 +60,8 @@ Qualitatively, we manually inspect a random few audio files from the test set. F
 
 |  &nbsp;  |  Mixed testing data  |  Target testing data  |
 |:--------:|:------------:|:-------------:|
-|Mixed-trained model|[![alt text](test_results/mixedmodel-mixeddata/percent_confusion_matrix.png)](test_results/mixedmodel-mixeddata/percent_confusion_matrix.png)|[![alt text](test_results/mixedmodel-targetdata/percent_confusion_matrix.png)](test_results/mixedmodel-targetdata/percent_confusion_matrix.png)|
-|Target-trained model|[![alt text](test_results/targetmodel-mixeddata/percent_confusion_matrix.png)](test_results/targetmodel-mixeddata/percent_confusion_matrix.png)|[![alt text](test_results/targetmodel-targetdata/percent_confusion_matrix.png)](test_results/targetmodel-targetdata/percent_confusion_matrix.png)|
+|Mixed-trained model|[![alt text](images/dvcpc_test_results/mixedmodel-mixeddata/percent_confusion_matrix.png)](images/dvcpc_test_results/mixedmodel-mixeddata/percent_confusion_matrix.png)|[![alt text](images/dvcpc_test_results/mixedmodel-targetdata/percent_confusion_matrix.png)](images/dvcpc_test_results/mixedmodel-targetdata/percent_confusion_matrix.png)|
+|Target-trained model|[![alt text](images/dvcpc_test_results/targetmodel-mixeddata/percent_confusion_matrix.png)](images/dvcpc_test_results/targetmodel-mixeddata/percent_confusion_matrix.png)|[![alt text](images/dvcpc_test_results/targetmodel-targetdata/percent_confusion_matrix.png)](images/dvcpc_test_results/targetmodel-targetdata/percent_confusion_matrix.png)|
 
 Here, we show the confusion matrices. Along the horizontal axis, we have the actual phoneme class. Along the vertical axis, we have the predicted phoneme class. The confusion matrix was computed by counting each predicted-actual phoneme combination, then dividing by the total number of times the actual phoneme appears. Thus, each cell's color represents a percentage of predicted phoneme for each actual phoneme. The color scale goes from purple to green too yellow, where a yellow cell means that when the actual phoneme was the phoneme associated with that column, the predicted phoneme was very often the phoneme associated with that row.
 
