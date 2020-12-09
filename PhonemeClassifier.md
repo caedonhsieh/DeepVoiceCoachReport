@@ -40,11 +40,12 @@ We used gradient clipping due to a significant stabilization in the training los
 
 |  &nbsp;  |  Target data, no gradient clipping  |  Target data, gradient clipping  |  Mixed data, gradient clipping  |
 |:--------:|:------------:|:-------------:|:------------:|
-|Training Accuracy|[![alt text](images/dvcpc_training_graphs/NoClipTrainAcc.png)](images/dvcpc_training_graphs/NoClipTrainAcc.png)|[![alt text](images/dvcpc_training_graphs/TargetClipTrainAcc.png)](images/dvcpc_training_graphs/TargetClipTrainAcc.png)|[![alt text](images/dvcpc_training_graphs/MixClipTrainAcc.png)](images/dvcpc_training_graphs/MixClipTrainAcc.png)
-|Validation Accuracy|[![alt text](images/dvcpc_training_graphs/NoClipValAcc.png)](images/dvcpc_training_graphs/NoClipValAcc.png)|[![alt text](images/dvcpc_training_graphs/TargetClipValAcc.png)](images/dvcpc_training_graphs/TargetClipValAcc.png)|[![alt text](images/dvcpc_training_graphs/MixClipValAcc.png)](images/dvcpc_training_graphs/MixClipValAcc.png)
-|Training Loss|[![alt text](images/dvcpc_training_graphs/NoClipTrainLoss.png)](images/dvcpc_training_graphs/NoClipTrainLoss.png)|[![alt text](images/dvcpc_training_graphs/TargetClipTrainLoss.png)](images/dvcpc_training_graphs/TargetClipTrainLoss.png)|[![alt text](images/dvcpc_training_graphs/MixClipTrainLoss.png)](images/dvcpc_training_graphs/MixClipTrainLoss.png)
-|Validation Loss|[![alt text](images/dvcpc_training_graphs/NoClipValLoss.png)](images/dvcpc_training_graphs/NoClipValLoss.png)|[![alt text](images/dvcpc_training_graphs/TargetClipValLoss.png)](images/dvcpc_training_graphs/TargetClipValLoss.png)|[![alt text](images/dvcpc_training_graphs/MixClipValLoss.png)](images/dvcpc_training_graphs/MixClipValLoss.png)
-You can click on an image to see it in full-size.
+|Training Accuracy|[![alt text](images/dvcpc_training_graphs/NoClipTrainAcc.png)](images/dvcpc_training_graphs/NoClipTrainAcc.png)|[![alt text](images/dvcpc_training_graphs/TargetClipTrainAcc.png)](images/dvcpc_training_graphs/TargetClipTrainAcc.png)|[![alt text](images/dvcpc_training_graphs/MixClipTrainAcc.png)](images/dvcpc_training_graphs/MixClipTrainAcc.png)|
+|Validation Accuracy|[![alt text](images/dvcpc_training_graphs/NoClipValAcc.png)](images/dvcpc_training_graphs/NoClipValAcc.png)|[![alt text](images/dvcpc_training_graphs/TargetClipValAcc.png)](images/dvcpc_training_graphs/TargetClipValAcc.png)|[![alt text](images/dvcpc_training_graphs/MixClipValAcc.png)](images/dvcpc_training_graphs/MixClipValAcc.png)|
+|Training Loss|[![alt text](images/dvcpc_training_graphs/NoClipTrainLoss.png)](images/dvcpc_training_graphs/NoClipTrainLoss.png)|[![alt text](images/dvcpc_training_graphs/TargetClipTrainLoss.png)](images/dvcpc_training_graphs/TargetClipTrainLoss.png)|[![alt text](images/dvcpc_training_graphs/MixClipTrainLoss.png)](images/dvcpc_training_graphs/MixClipTrainLoss.png)|
+|Validation Loss|[![alt text](images/dvcpc_training_graphs/NoClipValLoss.png)](images/dvcpc_training_graphs/NoClipValLoss.png)|[![alt text](images/dvcpc_training_graphs/TargetClipValLoss.png)](images/dvcpc_training_graphs/TargetClipValLoss.png)|[![alt text](images/dvcpc_training_graphs/MixClipValLoss.png)](images/dvcpc_training_graphs/MixClipValLoss.png)|
+
+Note that you can click on an image to see it in full-size.
 
 ## Evaluation
 To evaluate the model, we tested both the target-trained and mixed-trained models against both the target accent and mixed accent testing data. We trained using the saved model weights at the point with the lowest validation loss from training–
