@@ -88,7 +88,7 @@ There are a few notable observations. First, both models are very good at predic
 
 Lastly, we will manually analyze two specific examples. One of these is American English, and the other is not.
 
-The first example is American English, and you can listen to it [here](audio/common_voice_en_17945591.wav).
+The first example is American English, and you can listen to it [here](audio/common_voice_en_17945591.wav). The speaker says, "It is a fact".
 
 | Model | Figure |
 |:-----:|:------:|
@@ -99,7 +99,7 @@ In general, the target-trained model is more confident than the mixed-train mode
 
 There are several other specific observations. At around frame 100, we have the "T" phoneme from "it", which the target-trained model misclassifies as a "D" phoneme. Confusing the "T" and "D" phonemes may be a nuance of the American English accent. At around frame 140, there is a large spike in confidence for both models, which is the phoneme "F" in "fact". At around frame 170, both models misclassify the "K" phoneme of "fact", classifying the whole section as "T". However, the confidence increases when the actual phoneme is "T" shortly afterwards, especially in the target-trained model.
 
-The second example is not American English, and you can listen to it [here](audio/common_voice_en_76209.wav).
+The second example is not American English, and you can listen to it [here](audio/common_voice_en_76209.wav). The speaker says, "What will the weather be in Idaho".
 
 | Model | Figure |
 |:-----:|:------:|
