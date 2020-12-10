@@ -11,7 +11,8 @@
 
 
 ## Introduction
-
+This part of the project is the accent classifier which  is a convolutional neural network that takes in input audio and classifies the speech as either an American English or non-American English accent. The goal of this is to see
+if it is possible to locate the certain sounds to find what the network distignuishes as non-American English and to provide that as input to the user. We trained our model initially on the Speech Accent Archive and later the Mozilla Common Voice dataset.
 
 ## Architecture
 The accent classifier is a feed-forward convolutional neural network that contains an attention module in between an encoder and decoder. The encoder contains 4 convolutional blocks where each block has a 1D convolutional layer followed by batch normalization, ReLU, and dropout. The decoder is another 4 convolutional blocks with the same structure mentioned before and followed by two linear layers. These final linear layers will output the probability that the audio is American English accent using the melspectogram. We also tested an architecture for training where the attention module was placed after 8 convolutional blocks when training initially with the Speech Accent Archive.
