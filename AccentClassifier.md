@@ -55,14 +55,14 @@ We concluded that the two second chunk size had the best performance in terms of
 
 
 We initially had a training run for the Mozilla Common Voice dataset with max epoch of 50. This run used both attention and 2-second chunk size and validation occurred at the end of every training epoch.  
-The associated tensorboard can be found here: https://tensorboard.dev/experiment/ZvyEUeHaRMGXJQS86l1H1w/#scalars
+The associated tensorboard can be found here: [https://tensorboard.dev/experiment/ZvyEUeHaRMGXJQS86l1H1w/#scalars](https://tensorboard.dev/experiment/ZvyEUeHaRMGXJQS86l1H1w/#scalars)
 
 [![alt text](images/accent-c/50epoch.png)](images/accent-c/50epoch.png)
 
 [![alt text](https://i.imgur.com/AEfY3C1.png)](https://i.imgur.com/AEfY3C1.png)
 
 After noticing that the model converged at around 15 epochs, we ran another run with max epoch at 20 to confirm this.
-The tensorboard for this can ve found at: https://tensorboard.dev/experiment/KbcwNHEDRDOHBYjLgNEOWg/#scalars
+The tensorboard for this can be found at: [https://tensorboard.dev/experiment/KbcwNHEDRDOHBYjLgNEOWg/#scalars](https://tensorboard.dev/experiment/KbcwNHEDRDOHBYjLgNEOWg/#scalars)
 
 [![alt text](https://i.imgur.com/Lo7v36S.png)](https://i.imgur.com/Lo7v36S.png)
 [![alt text](https://i.imgur.com/Bq0pqyS.png)](https://i.imgur.com/Bq0pqyS.png)
@@ -73,7 +73,7 @@ The tensorboard for this can ve found at: https://tensorboard.dev/experiment/Kbc
 
  As part of our experiment, we also conducted additional to test our hypothesis if the model would work better with choosing a non-American accent as our target accent due to the greater diversity within American English accent.
 The target accent, Indian, consisted of only 11% of the dataset and we modified the model by giving weight to the target value. 
-The tensorboard for this run can be found here: https://tensorboard.dev/experiment/2Apz8Eq5T1Ky7qvnA8VLBw/#scalars
+The tensorboard for this run can be found here: [https://tensorboard.dev/experiment/2Apz8Eq5T1Ky7qvnA8VLBw/#scalars](https://tensorboard.dev/experiment/2Apz8Eq5T1Ky7qvnA8VLBw/#scalars)
 [![alt text](https://i.imgur.com/WUxEINh.png)](https://i.imgur.com/WUxEINh.png)
 [![alt text](https://i.imgur.com/E0JXlVh.png)](https://i.imgur.com/E0JXlVh.png)
 [![alt text](https://i.imgur.com/BbIoGad.png)](https://i.imgur.com/BbIoGad.png)
