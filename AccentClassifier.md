@@ -48,6 +48,7 @@ The results for the training runs for using chunk sizes of 1, 2, and 4 can be se
 |1 Second|.867| .363|
 |2 Second|.906|.283|
 |4 Second|.917|.236|
+
 *This table shows the best loss during training for a models that were trained on 1, 2, and 4 second chunks of audio.It also shows the corresponding accuracy at that loss*
 
 We concluded that the two second chunk size had the best performance in terms of trade-off as the 4 second chunk size took much longer for training. Additionally, the results of using the attention module were slightly better than without. The precision, accuracy, recall, and loss for our final training with a chunk size of 2 seconds and the attention module trained on the Speech Accent Archive can be seen below. 
