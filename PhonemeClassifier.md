@@ -70,7 +70,7 @@ First, we will look at the overall statistics from testing.
 
 *This table shows the testing accuracy and loss for each combination of model and type of testing data (mixed or only target)*
 
-Here, we show the average testing accuracy and loss for both models with both testing data partitions. While both models improved slightly with the target accent testing data, the target-trained model had a slightly larger accuracy performance gap of 3%, compared to the mixed-trained model's 1.3% performance gap. In general, the target-trained model performed better than the mixed-trained model, even on the mixed accent testing data. This may be due to a larger proportion of American English accents relative to other accents in the mixed accent testing data.
+Here, we show the average testing accuracy and loss for both models with both testing data partitions. For context, always predicting the most common phoneme (silence) would give an accuracy of 0.248. While both models improved slightly with the target accent testing data, the target-trained model had a slightly larger accuracy performance gap of 3%, compared to the mixed-trained model's 1.3% performance gap. In general, the target-trained model performed better than the mixed-trained model, even on the mixed accent testing data. This may be due to a larger proportion of American English accents relative to other accents in the mixed accent testing data.
 
 #### Confusion Matrices
 Next, we analyze confusion matrices that show the relationship between actual and predicted phonemes for each test run.
