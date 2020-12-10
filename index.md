@@ -25,5 +25,5 @@ We trained and tested both of these deep learning parts with audio speech data f
 
 - **[Click here to learn more about the Accent Classifier](AccentClassifier.md)**, which uses an attention-based neural network to classify speech as either the target accent or not the target accent
 - **[Click here to learn more about the Phoneme Classifier](PhonemeClassifier.md)**, which attempts to classify phonemes in given speech, extracting perceived accent errors from the classifier's confidence
-- **[Click here to read the Deep Voice Coach paper](test.pdf)**.
+- **[Click here to read the Deep Voice Coach paper](DeepVoiceCoachPaper.pdf)**.
 
