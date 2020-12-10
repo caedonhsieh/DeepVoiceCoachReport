@@ -19,5 +19,6 @@ We built a two-part deep learning system that classifies accents in speech to pr
 
 - **[Click here to learn more about the Accent Classifier](AccentClassifier.md)**, which uses an attention-based neural network to classify speech as either the target accent or not the target accent
 - **[Click here to learn more about the Phoneme Classifier](PhonemeClassifier.md)**, which attempts to classify phonemes in given speech, extracting perceived accent errors from the classifier's confidence
+- **[Click here to read the Deep Voice Coach paper](test.pdf)**.
 
 We trained and tested both of these deep learning parts with audio speech data from the Speech Accent Archive and Mozilla Common Voice datasets, achieving mixed results. The accent classifier's overall confidence drops when switching from American English to not American English, and the phoneme classifier trained on only the target accent had a larger confidence gap with target and mixed accent test data compared to the model trained on mixed accents. However, the results are not conclusive enough for practical usability. Future work may include exploring different data or more data, attempting to achieve more stable results.
