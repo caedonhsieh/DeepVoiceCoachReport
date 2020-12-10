@@ -25,7 +25,8 @@ After our inital inconclusive results for the training on the Speech Accent Arch
 This dataset includes 1,400 hours of validated English speech and transcripts by 60,000+ speakers, with accent labels for 700+ hours. We will only use labeled data, and we simplify the classification to binary labels of American English and not American English. The data is structured in a CSV file that includes the relative path to the audio file, transcript, age, gender, and accent. The audio files are provided in the MP3 format. We will preprocess this data using the Montreal Forced Aligner (MFA) to extract ground truth phonemes with start and end time.
 The target accent (American English) consists of 55% of the Mozilla Common Voice dataset.
 ## Training
- The preprocessing for accent classification will turn each audio file into log-melspectograms with a sample rate of 16000. The model will train using randomly selected second chunks of these melspectograms that are collated to create the batch. The training was conducted on 1, 2, and 4 second chunks with their results seen below (Figure 1). The target accent was American English and given a value of 1. During training, validation will occur once per training epoch and accuracy, precision, loss, and recall will all be tracked through both training and validation epochs. Additionally, the model will use binary cross entropy for it's loss function and will use an Adam optimization during training.
+The preprocessing for accent classification will turn each audio file into log-melspectograms with a sample rate of 16000. The model will train using randomly selected second chunks of these melspectograms that are collated to create the batch. The training was conducted on 1, 2, and 4 second chunks with their results seen below (Figure 1). The target accent was American English and given a value of 1. During training, validation will occur once per training epoch and accuracy, precision, loss, and recall will all be tracked through both training and validation epochs. Additionally, the model will use binary cross entropy for it's loss function and will use an Adam optimization during training.
+
 
 Our initial experiments with the Speech Accent Archive were based around finding the best chunk sized for training and whether attention helped improve the performance of the model. 
 
@@ -39,7 +40,7 @@ We concluded that the model with the Attention module had better overrall perfor
 |Model With Attention|.903| .259|
 |Model Without Attention|.864|.283|
 
-*This table shows the best loss during training for a models  with  and  without  Attention.   It  also  shows  the  corresponding accuracy at that loss*
+*This table shows the best loss during training for models  with  and  without  Attention.   It  also  shows  the  corresponding accuracy at that loss*
 
 The results for the training runs for using chunk sizes of 1, 2, and 4 can be seen below using the Speech Accent Archive. 
 
@@ -49,29 +50,36 @@ The results for the training runs for using chunk sizes of 1, 2, and 4 can be se
 |2 Second|.906|.283|
 |4 Second|.917|.236|
 
-*This table shows the best loss during training for a models that were trained on 1, 2, and 4 second chunks of audio.It also shows the corresponding accuracy at that loss*
+*This table shows the best loss during training for models that were trained on 1, 2, and 4 second chunks of audio.It also shows the corresponding accuracy at that loss*
 
 We concluded that the two second chunk size had the best performance in terms of trade-off as the 4 second chunk size took much longer for training. Additionally, the results of using the attention module were slightly better than without. The precision, accuracy, recall, and loss for our final training with a chunk size of 2 seconds and the attention module trained on the Speech Accent Archive can be seen below. 
 The target accent (American English) was 80% of the dataset.
 [![alt text](images/accent-c/recall.png)](iimages/accent-c/recall.png)
 
+*Loss (top left), Precision (top right), Accuracy (bottom left), and Recall (bottom right) for the final training run using the Speech Accent Archive with a chunk size of 2. This training run had a max epoch of 200. The target accent (American English) was 80 percent of the total dataset.*
 
-We initially had a training run for the Mozilla Common Voice dataset with max epoch of 50. This run used both attention and 2-second chunk size and validation occurred at the end of every training epoch.  
-The target accent (American English) was 55% of this dataset.
+We initially had a training run for the Mozilla Common Voice dataset with max epoch of 50. This run used both attention and 2-second chunk size and validation occurred at the end of every training epoch. The target accent (American English) was 55% of this dataset.
 The associated tensorboard can be found here: [https://tensorboard.dev/experiment/ZvyEUeHaRMGXJQS86l1H1w/#scalars](https://tensorboard.dev/experiment/ZvyEUeHaRMGXJQS86l1H1w/#scalars)
 
 [![alt text](images/accent-c/50epoch.png)](images/accent-c/50epoch.png)
+*These four graphs show the accuracy and loss for the max epoch of 50 run using the Mozilla Common Voice Dataset. The top left is the accuracy over epochs for training, top right is accuracy over epochs for validation, bottom left is loss over epochs for training, and bottom right is loss over epochs for validation. 55 percent of the dataset was the target accent.*
 
 [![alt text](https://i.imgur.com/AEfY3C1.png)](https://i.imgur.com/AEfY3C1.png)
+*These two graphs show the precision and recall or the max epoch of 50 run using the Mozilla Common Voice Dataset. The top graph is for precision for both training and validation, and the bottom graph is for recall for both training and validation. The minimum loss occurred at 15. This checkpoint was used for later evaluation. 55 percent of the dataset was the target accent.*
 
 After noticing that the model converged at around 15 epochs, we ran another run with max epoch at 20 to confirm this.
 The target accent (American English) was 55% of this dataset.
 The tensorboard for this can be found at: [https://tensorboard.dev/experiment/KbcwNHEDRDOHBYjLgNEOWg/#scalars](https://tensorboard.dev/experiment/KbcwNHEDRDOHBYjLgNEOWg/#scalars)
 
 [![alt text](https://i.imgur.com/Lo7v36S.png)](https://i.imgur.com/Lo7v36S.png)
+*These two graphs show the accuracy for the training run on the Mozilla Common Voice Dataset where the max epoch was 20*
 [![alt text](https://i.imgur.com/Bq0pqyS.png)](https://i.imgur.com/Bq0pqyS.png)
+*These two graphs show the loss for the training run on the Mozilla Common Voice Dataset where the max epoch was 20*
 [![alt text](https://i.imgur.com/QUCFSW1.png)](https://i.imgur.com/QUCFSW1.png)
+*These two graphs show the precision for the training run on the Mozilla Common Voice Dataset where the max epoch was 20*
 [![alt text](https://i.imgur.com/BQ5P3gP.png)](https://i.imgur.com/BQ5P3gP.png)
+*These two graphs show the recall for the training run on the Mozilla Common Voice Dataset where the max epoch was 20*
+
 
 
 
@@ -79,13 +87,21 @@ The tensorboard for this can be found at: [https://tensorboard.dev/experiment/Kb
 The target accent, Indian, consisted of only 11% of the dataset and we modified the model by giving weight to the target value. 
 The tensorboard for this run can be found here: [https://tensorboard.dev/experiment/2Apz8Eq5T1Ky7qvnA8VLBw/#scalars](https://tensorboard.dev/experiment/2Apz8Eq5T1Ky7qvnA8VLBw/#scalars)
 [![alt text](https://i.imgur.com/WUxEINh.png)](https://i.imgur.com/WUxEINh.png)
+*These two graphs show the accuracy for the training run on the Mozilla Common Voice Dataset where the target accent was 'Indian'*
+
 [![alt text](https://i.imgur.com/E0JXlVh.png)](https://i.imgur.com/E0JXlVh.png)
+*These two graphs show the loss for the training run on the Mozilla Common Voice Dataset where the target accent was 'Indian'*
+
 [![alt text](https://i.imgur.com/BbIoGad.png)](https://i.imgur.com/BbIoGad.png)
+*These two graphs show the precision for the training run on the Mozilla Common Voice Dataset where the target accent was 'Indian'*
+
 [![alt text](https://i.imgur.com/0uk94Ay.png)](https://i.imgur.com/0uk94Ay.png)
+*These two graphs show the recall for the training run on the Mozilla Common Voice Dataset where the target accent was 'Indian'*
+
 
 ## Evaluation
 
-
+For all the following evaluations, we used a checkpoint from the training run using the Mozilla Common Voice Dataset where the the max epochs was 50.
 
 We used the attention weights to create visualizations of what the model was attending to. An example of this attention visualization can be seen below the axises of the module are frames by frames for a 2 second chunk of audio (approximately 201 frames). We concluded that where there are horizontal 'lines' on the visualization all the frames on the horizontal axis were attending to a single frame from the vertical axis. 
 However, we could not retreive any conclusive results from these visualizations but did find that for our model that trained on the Mozilla Common Voice Dataset that the 'vertical' frames that was being attended were moving approxmiately by 50 frames for each visualization generated in sequential order signifying there was a pattern for the module. For instance, in the example below which are taken .5 seconds apart (hop size)) for the given audio , we can see that the lines move approximately 50 frames upward in the vertical direction across the 3 with the left occurring first in sequential order.
@@ -93,8 +109,7 @@ However, we could not retreive any conclusive results from these visualizations 
 | Attention for 2 second chunk starting at 0 seconds| Attention for 2 second chunk starting at .5 seconds| Attention for 2 second chunk starting at 1 seconds | 
 |:-----:|:------:|:--------:|
 |[![alt text](https://i.imgur.com/g4t3WVw.png)](https://i.imgur.com/g4t3WVw.png)|[![alt text](https://i.imgur.com/MZEVm9Q.png)](https://i.imgur.com/MZEVm9Q.png)| [![alt text](https://i.imgur.com/J29zeeB.png)](https://i.imgur.com/J29zeeB.png)
-
-
+*These images are the visualizations for the attention a 1.5 audio clip that has an Australian accent. From left to right these visualizations go in sequential order for increments of .5 seconds and each is 2 seconds (201 frames).*
 
 
 Due to the inconclusive evidence from the attention visualizations, we 
@@ -108,11 +123,13 @@ The first audio file that was  tested on was an American English Accent seen [he
 The probablity over time graph for this given audio file is below (this can be expanded by clicking on the image):
 
 [![alt text](https://i.imgur.com/ypIlWHF.png)](https://i.imgur.com/ypIlWHF.png)
+*An annotated graph of the probablities against where the chunk starts for an audio file where the speaker speaks only English in an American accent. The annotations at the bottom are the speech in the audio file and are approxoimated for where each words begins and ends.*
 
 
 [Here](audio/TeluguTrue.mp3) is an audio file of a speech spoken in a non-English Language (Telugu). The probablity over time graph for this given audio file is below:
 
 [![alt text](https://i.imgur.com/jgyXSCo.png)](https://i.imgur.com/jgyXSCo.png)
+*This is a graph of the proabablities for each chunk against where the chunk starts for an audio file where the speaker speaks Telugu (non-English language).*
 
 
 
@@ -120,6 +137,8 @@ Additionally, we tested transitioning from an American English Accent to French 
 The probablity over time graph for this given audio file is below:
 
 [![alt text](https://i.imgur.com/qBsYcS2.png)](https://i.imgur.com/qBsYcS2.png)
+*This is a graph of the proabablities for each chunk against where the chunk starts for an audio file where the speaker starts by speaking in an American English accent and transitions to speaking French at the 21 second mark*
+
 
 
 
