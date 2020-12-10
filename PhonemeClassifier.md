@@ -93,9 +93,9 @@ Lastly, we will manually analyze two specific examples. One of these is American
 | Model | Graphs |
 |:-----:|:------:|
 |Mixed-trained|[![alt text](images/dvcpc_test_results/mixedmodel-targetdata/target_confidence_common_voice_en_17945591.png)](images/dvcpc_test_results/mixedmodel-targetdata/target_confidence_common_voice_en_17945591.png)|
-|Target-trained|[![alt text](images/dvcpc_test_results/targetmodel-targetdata/target_confidence_common_voice_en_17945591.png)](images/dvcpc_test_results/mixedmodel-targetdata/target_confidence_common_voice_en_17945591.png)|
+|Target-trained|[![alt text](images/dvcpc_test_results/targetmodel-targetdata/target_confidence_common_voice_en_17945591.png)](images/dvcpc_test_results/targetmodel-targetdata/target_confidence_common_voice_en_17945591.png)|
 
-*The confidence graphs plots the confidence, computed by the max of the softmax of the network's output vector, for each frame of the audio clip. The phoneme graphs plot the predicted (blue) and actual (orange) phonemes for each frame of the audio clip.*
+*The confidence graphs plots the confidence, computed by the max of the softmax of the network's output vector, for each frame of the audio clip. The phoneme graphs plot the predicted (blue) and actual (orange) phonemes for each frame of the audio clip. View frames, predicted phonemes, and actual phonemes for the [target-trained model](images/dvcpc_test_results/targetmodel-targetdata/target_confidence_common_voice_en_17945591.txt) and [mixed-trained model](images/dvcpc_test_results/mixedmodel-targetdata/target_confidence_common_voice_en_17945591.txt)*
 
 In general, the target-trained model is more confident than the mixed-train model, even though it is not necessarily more accurate on this example. Both models are very confident on the silence. In general, the confidence is quite noisy, and seems to sharply drop between phonemes, which makes sense because the speech itself is transitioning between phonemes.
 
@@ -105,10 +105,10 @@ The second example is not American English, and you can listen to it [here](audi
 
 | Model | Graphs |
 |:-----:|:------:|
-|Mixed-trained|[![alt text](images/dvcpc_test_results/mixedmodel-mixeddata/mixed_confidence_common_voice_en_76209.png)](images/dvcpc_test_results/mixedmodel-targetdata/mixed_confidence_common_voice_en_76209.png)|
-|Target-trained|[![alt text](images/dvcpc_test_results/targetmodel-mixeddata/mixed_confidence_common_voice_en_76209.png)](images/dvcpc_test_results/mixedmodel-targetdata/mixed_confidence_common_voice_en_76209.png)|
+|Mixed-trained|[![alt text](images/dvcpc_test_results/mixedmodel-mixeddata/mixed_confidence_common_voice_en_76209.png)](images/dvcpc_test_results/mixedmodel-mixeddata/mixed_confidence_common_voice_en_76209.png)|
+|Target-trained|[![alt text](images/dvcpc_test_results/targetmodel-mixeddata/mixed_confidence_common_voice_en_76209.png)](images/dvcpc_test_results/targetmodel-mixeddata/mixed_confidence_common_voice_en_76209.png)|
 
-*The confidence graphs plots the confidence, computed by the max of the softmax of the network's output vector, for each frame of the audio clip. The phoneme graphs plot the predicted (blue) and actual (orange) phonemes for each frame of the audio clip.*
+*The confidence graphs plots the confidence, computed by the max of the softmax of the network's output vector, for each frame of the audio clip. The phoneme graphs plot the predicted (blue) and actual (orange) phonemes for each frame of the audio clip. View frames, predicted phonemes, and actual phonemes for the [target-trained model](images/dvcpc_test_results/targetmodel-mixeddata/mixed_confidence_common_voice_en_76209.txt) and [mixed-trained model](images/dvcpc_test_results/mixedmodel-mixeddata/mixed_confidence_common_voice_en_76209.txt)*
 
 The confidence on this example is generally lower than the previous example. It also seems slightly more complicated, but again we see the same spike pattern. Some of the confidence spikes seem to correspond to correct classifications, but others do not. Even though this example is not American English, we still see a higher confidence with the target-trained model, which makes it hard to distinguish. The highest confidence spike in the target-trained model occurs at around frame 250, which is the "AY1" phoneme at the start of "Idaho". The speaker pronounces this with an "H" sound just before, which the target-trained model classifies just before the confidence spike.
 
