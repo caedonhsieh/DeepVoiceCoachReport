@@ -29,6 +29,7 @@ The target accent (American English) consists of 55% of the Mozilla Common Voice
 
 Our initial experiments with the Speech Accent Archive were based around finding the best chunk sized for training and whether attention helped improve the performance of the model. 
 
+
 We tested if using attention or no attention would provide better performance for the model. 
 We concluded that the model with the Attention module had better overrall performance using the lowest validation loss. The graphs for these training runs can be seen below
 
@@ -44,17 +45,18 @@ The results for the training runs for using chunk sizes of 1, 2, and 4 can be se
 
 | Chunk Size that Model is Trained on| Accuracy| Loss | 
 |:-----:|:------:|:--------:|
-|1 Second|.867| .363
+|1 Second|.867| .363|
 |2 Second|.906|.283|
 |4 Second|.917|.236|
 *This table shows the best loss during training for a models that were trained on 1, 2, and 4 second chunks of audio.It also shows the corresponding accuracy at that loss*
 
 We concluded that the two second chunk size had the best performance in terms of trade-off as the 4 second chunk size took much longer for training. Additionally, the results of using the attention module were slightly better than without. The precision, accuracy, recall, and loss for our final training with a chunk size of 2 seconds and the attention module trained on the Speech Accent Archive can be seen below. 
-
+The target accent (American English) was 80% of the dataset.
 [![alt text](images/accent-c/recall.png)](iimages/accent-c/recall.png)
 
 
 We initially had a training run for the Mozilla Common Voice dataset with max epoch of 50. This run used both attention and 2-second chunk size and validation occurred at the end of every training epoch.  
+The target accent (American English) was 55% of this dataset.
 The associated tensorboard can be found here: [https://tensorboard.dev/experiment/ZvyEUeHaRMGXJQS86l1H1w/#scalars](https://tensorboard.dev/experiment/ZvyEUeHaRMGXJQS86l1H1w/#scalars)
 
 [![alt text](images/accent-c/50epoch.png)](images/accent-c/50epoch.png)
@@ -62,6 +64,7 @@ The associated tensorboard can be found here: [https://tensorboard.dev/experimen
 [![alt text](https://i.imgur.com/AEfY3C1.png)](https://i.imgur.com/AEfY3C1.png)
 
 After noticing that the model converged at around 15 epochs, we ran another run with max epoch at 20 to confirm this.
+The target accent (American English) was 55% of this dataset.
 The tensorboard for this can be found at: [https://tensorboard.dev/experiment/KbcwNHEDRDOHBYjLgNEOWg/#scalars](https://tensorboard.dev/experiment/KbcwNHEDRDOHBYjLgNEOWg/#scalars)
 
 [![alt text](https://i.imgur.com/Lo7v36S.png)](https://i.imgur.com/Lo7v36S.png)
@@ -100,29 +103,22 @@ with the Mozilla Common Voice Dataset
 incremented by .5 seconds (converted to frames) were passed sequentially into the model. The graph generated was the probablities for the chunk plotted against where that 
 chunk started. 
 
-The first audio file that was  tested on was an American English Accent seen here:
-
-
-
+The first audio file that was  tested on was an American English Accent seen [here](audio/ShortEnglish.mp3).
 The probablity over time graph for this given audio file is below (this can be expanded by clicking on the image):
 
 [![alt text](https://i.imgur.com/ypIlWHF.png)](https://i.imgur.com/ypIlWHF.png)
 
 
-Here is an audio file of a speech spoken in a non-English Language (Telugu):
-
-
-The probablity over time graph for this given audio file is below:
+[Here](audio/TeluguTrue.mp3) is an audio file of a speech spoken in a non-English Language (Telugu). The probablity over time graph for this given audio file is below:
 
 [![alt text](https://i.imgur.com/jgyXSCo.png)](https://i.imgur.com/jgyXSCo.png)
 
 
 
-Additionally, we testing transitioning from an American English Accent to French in the same audio clip:
-
-
+Additionally, we tested transitioning from an American English Accent to French in the same audio clip. The audio can be found [here](audio/EngFrench.mp3).
 The probablity over time graph for this given audio file is below:
 
+[![alt text](https://i.imgur.com/qBsYcS2.png)](https://i.imgur.com/qBsYcS2.png)
 
 
 
