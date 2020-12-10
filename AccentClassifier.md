@@ -37,6 +37,7 @@ We concluded that the model with the Attention module had better overrall perfor
 |:-----:|:------:|:--------:|
 |Model With Attention|.903| .259|
 |Model Without Attention|.864|.283|
+
 *This table shows the best loss during training for a models  with  and  without  Attention.   It  also  shows  the  corresponding accuracy at that loss*
 
 The results for the training runs for using chunk sizes of 1, 2, and 4 can be seen below using the Speech Accent Archive. 
@@ -85,6 +86,13 @@ The tensorboard for this run can be found here: https://tensorboard.dev/experime
 We used the attention weights to create visualizations of what the model was attending to. An example of this attention visualization can be seen below the axises of the module are frames by frames for a 2 second chunk of audio (approximately 201 frames). We concluded that where there are horizontal 'lines' on the visualization all the frames on the horizontal axis were attending to a single frame from the vertical axis. 
 However, we could not retreive any conclusive results from these visualizations but did find that for our model that trained on the Mozilla Common Voice Dataset that the 'vertical' frames that was being attended were moving approxmiately by 50 frames for each visualization generated in sequential order signifying there was a pattern for the module. For instance, in the example below which are taken .5 seconds apart (hop size)) for the given audio , we can see that the lines move approximately 50 frames upward in the vertical direction across the 3 with the left occurring first in sequential order.
 
+| Attention for 2 second chunk starting at 0 seconds| Attention for 2 second chunk starting at .5 seconds| Attention for 2 second chunk starting at 1 seconds | 
+|:-----:|:------:|:--------:|
+|[![alt text](https://i.imgur.com/g4t3WVw.png)](https://i.imgur.com/g4t3WVw.png)|[![alt text](https://i.imgur.com/MZEVm9Q.png)](https://i.imgur.com/MZEVm9Q.png)| [![alt text](https://i.imgur.com/J29zeeB.png)](https://i.imgur.com/J29zeeB.png)
+
+
+
+
 Due to the inconclusive evidence from the attention visualizations, we 
 conducted some initial analysis by passing audio files into the model and retreiving the probablities 
 that given two second chunks were American English. This was done with the max epoch of 50 training run doneThe audio file was converted into a mel-spectogram and two second chunks who's start position
@@ -94,11 +102,26 @@ chunk started.
 
 The first audio file that was  tested on was an American English Accent seen here:
 
+
+
+The probablity over time graph for this given audio file is below (this can be expanded by clicking on the image):
+
+[![alt text](https://i.imgur.com/ypIlWHF.png)](https://i.imgur.com/ypIlWHF.png)
+
+
+Here is an audio file of a speech spoken in a non-English Language (Telugu):
+
+
 The probablity over time graph for this given audio file is below:
 
-We also tested 
+[![alt text](https://i.imgur.com/jgyXSCo.png)](https://i.imgur.com/jgyXSCo.png)
 
-Additionally, we testing transition during the speech into another accen
+
+
+Additionally, we testing transitioning from an American English Accent to French in the same audio clip:
+
+
+The probablity over time graph for this given audio file is below:
 
 
 
