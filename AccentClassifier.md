@@ -125,19 +125,25 @@ The probablity over time graph for this given audio file is below (this can be e
 [![alt text](https://i.imgur.com/ypIlWHF.png)](https://i.imgur.com/ypIlWHF.png)
 *An annotated graph of the probablities against where the chunk starts for an audio file where the speaker speaks only English in an American accent. The annotations at the bottom are the speech in the audio file and are approxoimated for where each words begins and ends.*
 
+When looking at this graph, we noticed that often hard consonants and long vowels were more associated with American English. 
+Additionally, we found that for the majority of the audio the model associated a probability of greater than .5 and the average of the probability for the chunks was .63. Although the average was not as high as it should be considering that it was spoken by a native english speaker, it did show the model had some success in correctly classifying.
 
 [Here](audio/TeluguTrue.mp3) is an audio file of a speech spoken in a non-English Language (Telugu). The probablity over time graph for this given audio file is below:
 
 [![alt text](https://i.imgur.com/jgyXSCo.png)](https://i.imgur.com/jgyXSCo.png)
 *This is a graph of the proabablities for each chunk against where the chunk starts for an audio file where the speaker speaks Telugu (non-English language).*
 
+For this graph the average probabliity was .47 which again does the ideal results we want for the probablity, but the sharp drops in probability within the graphd eos establish that it is able to distinguish to an extent between American English and not English.
 
-
-Additionally, we tested transitioning from an American English Accent to French in the same audio clip. The audio can be found [here](audio/EngFrench.mp3).
+W also tested transitioning from an American English Accent to French in the same audio clip. The audio can be found [here](audio/EngFrench.mp3).
 The probablity over time graph for this given audio file is below:
 
 [![alt text](https://i.imgur.com/qBsYcS2.png)](https://i.imgur.com/qBsYcS2.png)
 *This is a graph of the proabablities for each chunk against where the chunk starts for an audio file where the speaker starts by speaking in an American English accent and transitions to speaking French at the 21 second mark*
+
+This examples switches languages at the 21 second mark from American English to French. Here, we can see a drop off in probability that indicates that it was able to tell the change of language. The average probability for the first 20 seconds (American English portion) of the audio is .62 while the last 30 seconds (or the French portion) had an average probability of .45. Once again this large change in probability indciates that the language
+did to an extent learn the differences between the accent. However, due to the number of similiar phonemes in the languages could be the reason that there is not a larger
+difference between the two probabilties. 
 
 
 
@@ -147,4 +153,5 @@ After analyzing these graphs, we concluded the probabilities generally lowered w
 Additionally, by looking at the validation graphs seen in the training runs on the Mozilla Common Voice Dataset,
  the precision and recall highlighted that it was able to classify many samples accurately to a statistically significant margin.
 We belive that the manual evaluation and validation grpahs showcase that this method and prodcedure has potential as a way to idnetify misprounciation due 
-the models ability to distinguish accents.
+the models ability to distinguish accents. However, due to number of similiar sounds in many languages, the process for further
+expanding the model's ability to distinguish might be difficult or need an alternate approach.
