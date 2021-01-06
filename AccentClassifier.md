@@ -4,10 +4,10 @@
 - [Introduction](#introduction)
 - [Architecture](#architecture)
 - [Data](#data)
-- [Initial Experiments](#Initial Experiments)
+- [Initial Experiments](#initial experiments)
 - [Training](#training)
 - [Evaluation](#evaluation)
-- [Visualizations](#Visualizations)
+- [Visualizations](#visualizations)
 - [Results](#results)
 - [Conclusion](#conclusion)
 
@@ -129,11 +129,11 @@ was around 74%, but the precision value was around 80% during and around 70% for
 |Mozilla Common Voice| .51 | .74 | .80| .72|
 
  
-##Visualizations
+## Visualizations
   
 For all the following visualizations, we used a checkpoint from the training run using the Mozilla Common Voice Dataset where the the max epochs was 50.
 
-###Attention 
+### Attention 
 We created visualizations of the attention weights to see if we could gather any insights into what the model was attending. These attention visualizations had dimensions that were the number of frames by number of frames where the number of frames is equivalent to frames in each audio chunk (1 second = 100 frames). 
 
 We concluded that where there are horizontal 'lines' on the visualization was where the horizontal axis was attending to a single frame from the vertical axis. However, we could not retrieve any conclusive results from these visualizations that indicated that the model was distinguishing different accents.
@@ -147,7 +147,7 @@ We did find that that the 'lines' in the visualizations were moving upward when 
 
 *These images are the visualizations for the attention a 1.5 audio clip that has an Australian accent. From left to right these visualizations go in sequential order for increments of .5 seconds and each is 2 seconds (201 frames).*
 
-###Probabilities
+### Probabilities
 
 We created additional visualizations by passing audio files into the model and retrieving the 
 probability that given audio were American English. 
