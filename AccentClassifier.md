@@ -31,7 +31,7 @@ passes its output to the next block. The final output for the encoder is passed 
 [![alt text](https://i.imgur.com/XWJyI9w.png)](https://i.imgur.com/XWJyI9w.png)
 
 Here **d** represents the length of the output x. Attention(x) is then passed into the decoder which also consists of 4 sequential convolutional blocks. The output of the final block is passed into two sequential linear layers, and the final output is the probability that the audio is the American English Accent. An image showcasing the full structure of this model is below. 
-  [![alt text](images/accent-c/modelarc.png)](images/accent-c/modelarc.png)
+[![alt text](images/accent-c/modelarc.png)](images/accent-c/modelarc.png)
 
 ## Data
 For our initial experiments, we used the Speech Accent Archive provided [here](https://www.kaggle.com/rtatman/speech-accent-archive). The dataset has 1GB MP3 files with 214 accents from 177 countries. All speakers spoke the exact same sentences and the audio clips are usually 20-40 seconds long. These MP3 files are labeled through their filenames which contains the accent name and the corresponding accent number. The data has an associated CSV that gives information such as speaker id, origin, and location.
