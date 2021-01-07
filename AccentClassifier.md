@@ -233,5 +233,3 @@ for non-American English versus American English accents. This implied
 that the model did learn to an extent to distinguish between the two and that
 it has potential to be improved.
  
-The accent classifier when using the Mozilla Common Voice Dataset was able
-t
