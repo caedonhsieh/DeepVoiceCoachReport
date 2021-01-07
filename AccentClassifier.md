@@ -4,7 +4,7 @@
 - [Introduction](#introduction)
 - [Architecture](#architecture)
 - [Data](#data)
-- [Experiments](#initial experiments)
+- [Experiments](#experiments)
 - [Training](#training)
 - [Evaluation](#evaluation)
 - [Visualizations](#visualizations)
