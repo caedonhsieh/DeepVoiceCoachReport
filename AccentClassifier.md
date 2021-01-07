@@ -190,8 +190,10 @@ Accent and also use a piece of French text to make it easier instead of free-for
  as I was doing previously. Um - I will start  the text approximately in 
  5 seconds. Okay."**
 
-Calculating the averages from these probablities on different peices of texts
-showed that 
+We also calculated the average probabilities across various audio clips
+to see the difference in the average probability between non-American English versus American English accents for 
+5 different samples in each. We found that for non-American English it was approximately .43 while for American English it was at .58 which
+indicated that the model was able to distinguish between the two to an extent. 
 
 ## Conclusion
 
