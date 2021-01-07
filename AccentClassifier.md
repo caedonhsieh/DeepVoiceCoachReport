@@ -190,10 +190,48 @@ Accent and also use a piece of French text to make it easier instead of free-for
  as I was doing previously. Um - I will start  the text approximately in 
  5 seconds. Okay."**
 
-We also calculated the average probabilities across various audio clips
+We also calculated the average of the average probabilities across various audio clips
 to see the difference in the average probability between non-American English versus American English accents for 
-5 different samples in each. We found that for non-American English it was approximately .43 while for American English it was at .58 which
-indicated that the model was able to distinguish between the two to an extent. 
+5 different samples in each. We found that for non-American English it was approximately .44 while for American English it was at .54. 
+
+We conducted a unpaired t-test from these values and got a p-value of .007 which
+indicated that there was a statistically significant difference between
+the means of the groups of non-American English and American English probabilities. A table
+with the averages is seen below:
+
+| Non-American English  | American English|
+|:-----:|:-----:|
+|.41| .48 | 
+|.44| .6 | 
+|.45| .53| 
+|.43| .56 | 
+|.44| .51 | 
+*This table contains the values of the average probabilities, using 2 second chunks
+with a hop size of .5 seconds, for 5 non-American English
+and 5 American English audio files*
+
 
 ## Conclusion
 
+We determined that the accent classifier when using the Mozilla Common Voice
+Dataset was able to distinguish between American and non-American English accents 
+with mixed results.
+
+The high precision and recall values compared to the target accent
+being 55% of the dataset indicate the model learns to an extent on how to distinguish
+the accents. However, the accuracy value of .74 are not as high as we would want
+to implement the model for practical purposes. 
+
+Additionally through analyzing the visualizations of the attention weights, we
+could not find a pattern in or identify if the model was attending to frames or phonemes
+that would indicate an American English accent.
+
+However, the analysis of probabilities and the statistical t-test on a small
+number of samples showed that there was a statistically significant
+difference between the average probabilities outputted by the model
+for non-American English versus American English accents. This implied
+that the model did learn to an extent to distinguish between the two and that
+it has potential to be improved.
+ 
+The accent classifier when using the Mozilla Common Voice Dataset was able
+t
