@@ -4,7 +4,7 @@
 - [Introduction](#introduction)
 - [Architecture](#architecture)
 - [Data](#data)
-- [Initial Experiments](#initial experiments)
+- [Experiments](#initial experiments)
 - [Training](#training)
 - [Evaluation](#evaluation)
 - [Visualizations](#visualizations)
@@ -43,7 +43,7 @@ The preprocessing for accent classification will turn each audio file into log-m
 
 
 
-## Initial Experiments
+## Experiments
 We wanted to verify that the attention module improved the overall performance of 
 model. To test this, we trained a model where the architecture contained no attention module
 and compared it's performance to one that contained the module. For this training,
