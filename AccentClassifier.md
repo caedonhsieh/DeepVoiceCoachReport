@@ -199,13 +199,11 @@ indicated that there was a statistically significant difference between
 the means of the groups of non-American English and American English probabilities. A table
 with the averages is seen below:
 
-|Non-American English| American English|
-|:-----:|:------:|
-|.41| .48|
-|.44|.6|
-|.45|.53|
-|.43|.56|
-|.44|.51|
+
+| Attention for 2 second chunk starting at 0 seconds| Attention for 2 second chunk starting at .5 seconds| Attention for 2 second chunk starting at 1 seconds | 
+|:-----:|:------:|:--------:|
+|[![alt text](https://i.imgur.com/g4t3WVw.png)](https://i.imgur.com/g4t3WVw.png)|[![alt text](https://i.imgur.com/MZEVm9Q.png)](https://i.imgur.com/MZEVm9Q.png)| [![alt text](https://i.imgur.com/J29zeeB.png)](https://i.imgur.com/J29zeeB.png)|
+
 *This table contains the values of the average probabilities, using 2 second chunks
 with a hop size of .5 seconds, for 5 non-American English
 and 5 American English audio files*
