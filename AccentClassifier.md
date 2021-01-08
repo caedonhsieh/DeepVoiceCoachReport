@@ -145,7 +145,7 @@ We did find that that the 'lines' in the visualizations were moving upward when 
 |:-----:|:------:|:--------:|
 |[![alt text](https://i.imgur.com/g4t3WVw.png)](https://i.imgur.com/g4t3WVw.png)|[![alt text](https://i.imgur.com/MZEVm9Q.png)](https://i.imgur.com/MZEVm9Q.png)| [![alt text](https://i.imgur.com/J29zeeB.png)](https://i.imgur.com/J29zeeB.png)|
 
-*These images are the visualizations for the attention a 1.5 audio clip that has an Australian accent. From left to right these visualizations go in sequential order for increments of .5 seconds and each is 2 seconds (201 frames).*
+*These images are the visualizations for the attention a 1.5 second audio clip that has an Australian accent. From left to right these visualizations go in sequential order for increments of .5 seconds and each is 2 seconds (201 frames).*
 
 ### Probabilities
 
@@ -199,13 +199,13 @@ indicated that there was a statistically significant difference between
 the means of the groups of non-American English and American English probabilities. A table
 with the averages is seen below:
 
-| Non-American English  | American English|
-|:-----:|:-----:|
-|.41| .48 | 
-|.44| .6 | 
-|.45| .53| 
-|.43| .56 | 
-|.44| .51 | 
+|Non-American English| American English|
+|:-----:|:------:|
+|.41| .48|
+|.44|.6|
+|.45|.53|
+|.43|.56|
+|.44|.51|
 *This table contains the values of the average probabilities, using 2 second chunks
 with a hop size of .5 seconds, for 5 non-American English
 and 5 American English audio files*
