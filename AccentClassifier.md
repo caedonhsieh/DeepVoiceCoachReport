@@ -111,7 +111,7 @@ that model training on this dataset underperformed and was not able to distingui
 American English Accent and non-American English accents well. We believe this largely being due to the dataset being small, having
 a large amount of non-native English speakers that, and that all the speakers spoke the same language.
 
-| | Loss | Accuracy| Precision| Recall| 
+|Dataset | Loss | Accuracy| Precision| Recall| 
 |:-----:|:-----:|:------:|:--------:|:--------:|
 |Speech Accent Archive| .31 | .90 | .3| .4|
 
@@ -124,7 +124,7 @@ was around 74%, but the precision value was around 80% during and around 70% for
  to distinguish between non-American English and American English. 
 
  
-| | Loss | Accuracy| Precision| Recall| 
+| Dataset | Loss | Accuracy| Precision| Recall| 
 |:-----:|:-----:|:------:|:--------:|:--------:|
 |Mozilla Common Voice| .51 | .74 | .80| .72|
 
