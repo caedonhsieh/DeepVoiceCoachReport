@@ -203,10 +203,10 @@ with the averages is seen below:
 | Non-American English Accent Average Probabilities| American English Accent Average Probabilities| 
 |:-----:|:------:|
 |.41| .48|
-|[![alt text](https://i.imgur.com/MZEVm9Q.png)](https://i.imgur.com/MZEVm9Q.png)| [![alt text](https://i.imgur.com/J29zeeB.png)](https://i.imgur.com/J29zeeB.png)|
-|[![alt text](https://i.imgur.com/MZEVm9Q.png)](https://i.imgur.com/MZEVm9Q.png)| [![alt text](https://i.imgur.com/J29zeeB.png)](https://i.imgur.com/J29zeeB.png)|
-|[![alt text](https://i.imgur.com/MZEVm9Q.png)](https://i.imgur.com/MZEVm9Q.png)| [![alt text](https://i.imgur.com/J29zeeB.png)](https://i.imgur.com/J29zeeB.png)|
-|[![alt text](https://i.imgur.com/MZEVm9Q.png)](https://i.imgur.com/MZEVm9Q.png)| [![alt text](https://i.imgur.com/J29zeeB.png)](https://i.imgur.com/J29zeeB.png)|
+|.44| .6|
+|.45| .53|
+|.43| .56|
+|.44| .51|
 
 *This table contains the values of the average probabilities, using 2 second chunks
 with a hop size of .5 seconds, for 5 non-American English
